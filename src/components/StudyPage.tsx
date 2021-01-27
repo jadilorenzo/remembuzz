@@ -1,14 +1,16 @@
 import React from 'react';
+import { Button, Card, Container } from '@material-ui/core';
 
 const Flashcards = () =>  {
     return (
-        <div>
-            <h1>Study</h1>
-            <div className='box container'>
-                <button>Flashcards</button>
-
-            </div>  
-        </div>
+        <Container>
+            <Card>
+                <h1>Study</h1>
+                <div className='box container'>
+                    <Button>Flashcards</Button>
+                </div>  
+            </Card>
+        </Container>
     )
 }
 

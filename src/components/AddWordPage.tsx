@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../AppContext'
 import { post } from '../api'
+import { Button } from '@material-ui/core'
 
 const AddSetPage = () => {
     const { setAddWord, set } = useContext(AppContext)
@@ -26,8 +27,9 @@ const AddSetPage = () => {
                     <textarea value={definition} onChange={(e) => setDefinition(e.target.value)} />
                 </div>
                 <div style={{ marginTop: '1rem' }}>
-                    <button className='outlined' onClick={() => setAddWord(false)}>Cancel</button>
-                    <button className='filled' onClick={addSet}>Add</button>
+                    <Button className='outlined' onClick={() => setAddWord(false)}>Cancel</Button>
+                    {' '}
+                    <Button className='filled' onClick={addSet}>Add</Button>
                 </div>
             </div>
         </div>

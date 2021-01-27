@@ -3,6 +3,7 @@ import LoopIcon from '@material-ui/icons/Loop';
 import { useHistory } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import {Typography, Button} from "@material-ui/core";
+import z from '../BuzZ.png'
 
 const Header = () => {
     const history = useHistory()
@@ -10,9 +11,14 @@ const Header = () => {
 
     return (
         <div className='title'>
-            <LoopIcon style={{ fontSize: '2.5rem', margin: '0.5rem' }} />
             <div>
-                <Typography variant='h4'>Remem<span className='primary-text'>Buzz</span></Typography>
+                <Typography variant='h4'>
+                    Remem
+                    <span className='primary-text'>
+                        Buzz
+                        {/* <img src={z} style={{height: '1.85rem', position: 'relative', top: 1.5}} alt=''/> */}
+                    </span>
+                </Typography>
             </div> 
             <div style={{ flexGrow: 1 }} />
             <div className='header-buttons'>

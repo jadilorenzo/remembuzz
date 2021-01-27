@@ -10,7 +10,7 @@ const FrontPage = () => {
     return (
         <div>
             <img alt='learn' src={logo} style={{ width: '6rem' }} />
-            <Typography variant='h5'>
+            <Typography variant='h4'>
                 <Typewriter
                     options={{
                         cursor:'',

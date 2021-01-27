@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../AppContext'
 import { post } from '../api'
+import { Button } from '@material-ui/core'
 
 const AddSetPage = () => {
     const { setAddSet, userid} = useContext(AppContext)
@@ -19,8 +20,9 @@ const AddSetPage = () => {
                     <input onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div style={{marginTop: '1rem'}}>
-                    <button className='outlined' onClick={() => setAddSet(false)}>Cancel</button>
-                    <button className='filled' onClick={addSet}>Add</button>
+                    <Button className='outlined' onClick={() => setAddSet(false)}>Cancel</Button>
+                    {" "}
+                    <Button className='filled' onClick={addSet}>Add</Button>
                 </div>
             </div>
         </div>
