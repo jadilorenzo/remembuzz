@@ -20,11 +20,11 @@ const AppPage = () => {
                             keys={['name']} 
                             onClick={selectSet} 
                             onAddClick={() => setAddSet(true)} 
-                        />
+                            callEdit={() => {
+                                console.log('Edit')
+                            }}/>
                     </div> : null}
-                    <div className="box">
-                        <Search list={sets} keys={['name']} setItem={selectSet}/>
-                    </div>
+                    <Search list={sets} keys={['name']} setItem={selectSet} />
                     <br/>
                 </div>
             </Card>

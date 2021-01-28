@@ -11,7 +11,6 @@ export const AppContextProvider = (props: {
     const {replace, location} = useHistory()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [set, setSet] = useState('')
     const [showLogin, setShowLogin] = useState(false)
     const [login, setLogin] = useState(false)
     const [addSet, setAddSet] = useState(false)
@@ -50,8 +49,7 @@ export const AppContextProvider = (props: {
     }
 
     const selectSet = (id: string) => {
-        setSet(id)
-        replace("/terms") 
+        replace(`/terms/${id}`) 
     }
 
     const state = {
@@ -64,7 +62,6 @@ export const AppContextProvider = (props: {
         checkLogin,
         login, setLogin,
         showLogin, setShowLogin,
-        set, setSet,
         selectSet,
         addSet, setAddSet,
         userid, setUserId,
@@ -72,7 +69,7 @@ export const AppContextProvider = (props: {
         handleLogin
     }
 
-    console.log('provider', state.set)
+    console.log('provider', state)
 
     return (
         <AppContext.Provider value={state}>

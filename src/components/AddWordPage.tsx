@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../AppContext'
 import { post } from '../api'
-import { Button } from '@material-ui/core'
+import { Button, Container, Card, TextField } from '@material-ui/core'
 
 const AddSetPage = () => {
     const { setAddWord, set } = useContext(AppContext)
@@ -16,22 +16,24 @@ const AddSetPage = () => {
     return (
         <div>
             <h1>Add Term</h1>
-            <div className="container box">
-                <div className="input">
-                    <div>Term</div>
-                    <input value={term} onChange={(e) => setTerm(e.target.value)} />
-                </div>
-                <br/>
-                <div className="input">
-                    <div>Definition</div>
-                    <textarea value={definition} onChange={(e) => setDefinition(e.target.value)} />
-                </div>
-                <div style={{ marginTop: '1rem' }}>
-                    <Button className='outlined' onClick={() => setAddWord(false)}>Cancel</Button>
-                    {' '}
-                    <Button className='filled' onClick={addSet}>Add</Button>
-                </div>
-            </div>
+            <Container>
+                <Card>
+                    <div>
+                        <div>Term</div>
+                        <TextField placeholder='Term' variant='outlined' value={term} onChange={(e) => setTerm(e.target.value)} />
+                    </div>
+                    <br/>
+                    <div>
+                        <div>Definition</div>
+                        <TextField placeholder='Definition' multiline variant='outlined' value={definition} onChange={(e) => setDefinition(e.target.value)} />
+                    </div>
+                    <div style={{ marginTop: '1rem' }}>
+                        <Button variant='outlined' onClick={() => setAddWord(false)}>Cancel</Button>
+                        {' '}
+                        <Button variant='contained' color='primary' onClick={addSet}>Add</Button>
+                    </div>
+                </Card>
+            </Container>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import App from './App'
 import { BrowserRouter, Switch } from 'react-router-dom'
 import { AppContextProvider } from './AppContext'
 import { ThemeProvider, createMuiTheme, useMediaQuery, CssBaseline } from '@material-ui/core'
-import { purple, green } from '@material-ui/core/colors';
+import { purple, /* green */ } from '@material-ui/core/colors';
 
 const Router = () => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -33,7 +33,9 @@ const Router = () => {
             MuiCard: {
                 style: {
                     background: prefersDarkMode ? '#303030' : 'fafafa' ,
-                    padding: '0.5rem'
+                    padding: '0.5rem',
+                    maxHeight: '51vh',
+                    overflow: 'scroll'
                 },
                 variant: 'outlined'
             }

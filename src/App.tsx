@@ -4,18 +4,18 @@ import FrontPage from './components/FrontPage'
 import LoginPage from './components/LoginPage'
 import SetsPage from './components/SetsPage'
 import AddWordPage from './components/AddWordPage'
-import LearnPage from './components/LearnPage'
+import TermsPage from './components/TermsPage'
 import { AppContext } from './AppContext';
 import { useContext } from 'react';
 import AddSetPage from './components/AddSetPage';
 import { useHistory } from 'react-router-dom';
 import StudyPage from './components/StudyPage';
-import SideNav from './components/SideNav';
-import Route from './components/Route';
+import SideNav from './components/NavTabs';
+import StyledRoute from './components/StyledRoute';
 import Header from './components/Header';
 
 const App = () => {
-  const { showLogin, addSet, addWord } = useContext(AppContext)
+  const { showLogin, addSet, addWord, set } = useContext(AppContext)
   const history = useHistory()
   console.log(history.location.pathname)
 
@@ -23,19 +23,19 @@ const App = () => {
     <div>
       <Header/>
       <div>
-        <Route path="/">
+        <StyledRoute path="/">
             {!showLogin ? <FrontPage />
             : <LoginPage />}
-        </Route>
-        <Route path="/sets">
+        </StyledRoute>
+        <StyledRoute path="/sets">
             {!addSet ? <SetsPage/> : <AddSetPage/>}
-        </Route>
-        <Route path="/terms">
-            {!addWord ? <LearnPage/> : <AddWordPage/>}
-        </Route>
-        <Route path="/study">
+        </StyledRoute>
+        <StyledRoute path="/terms/:setid">
+          {!addWord ? <TermsPage /> : <AddWordPage />}
+        </StyledRoute>
+        <StyledRoute path="/study/:setid">
             <StudyPage/>
-        </Route>
+        </StyledRoute>
         <div style={{position: 'absolute', top: 'calc(50vh - 5rem)', display: 'flex', flexDirection: 'column'}}>
             <SideNav/>
         </div>
