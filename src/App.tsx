@@ -13,9 +13,10 @@ import StudyPage from './components/StudyPage';
 import SideNav from './components/NavTabs';
 import StyledRoute from './components/StyledRoute';
 import Header from './components/Header';
+import EditSetPage from './components/EditSetPage';
 
 const App = () => {
-  const { showLogin, addSet, addWord, set } = useContext(AppContext)
+  const { showLogin, addSet, addWord } = useContext(AppContext)
   const history = useHistory()
   console.log(history.location.pathname)
 
@@ -29,6 +30,9 @@ const App = () => {
         </StyledRoute>
         <StyledRoute path="/sets">
             {!addSet ? <SetsPage/> : <AddSetPage/>}
+        </StyledRoute>
+        <StyledRoute path="/sets/edit/:setid">
+          <EditSetPage/>
         </StyledRoute>
         <StyledRoute path="/terms/:setid">
           {!addWord ? <TermsPage /> : <AddWordPage />}

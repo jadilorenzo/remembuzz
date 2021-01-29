@@ -6,8 +6,9 @@ const Flashcards = () =>  {
         <Container>
             <Card>
                 <h1>Study</h1>
-                <div className='box container'>
+                <div>
                     <Button>Flashcards</Button>
+                    <Button>Test</Button>
                 </div>  
             </Card>
         </Container>

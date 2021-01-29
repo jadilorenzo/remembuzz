@@ -4,9 +4,11 @@ import List from './List'
 import Search from './Search'
 import {Set} from '../types'
 import { Container, Card } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
 const AppPage = () => {
     const { sets, selectSet, login, setAddSet, userid } = useContext(AppContext)
+    const history = useHistory()
 
     return (
         <Container>
@@ -20,8 +22,8 @@ const AppPage = () => {
                             keys={['name']} 
                             onClick={selectSet} 
                             onAddClick={() => setAddSet(true)} 
-                            callEdit={() => {
-                                console.log('Edit')
+                            callEdit={(id: number) => {
+                                history.push(`/sets/edit/${id}`)
                             }}/>
                     </div> : null}
                     <Search list={sets} keys={['name']} setItem={selectSet} />

@@ -10,6 +10,8 @@ const SideNav = () => {
     let index = routes.indexOf(path)
     if (path === '') {
         index = 0
+    } else if (path.includes('sets')) {
+        index = 1
     } else if (path.includes('terms')) {
         index = 2
     } else if (path.includes('study')) {

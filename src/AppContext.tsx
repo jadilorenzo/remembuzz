@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import {get} from './api'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useLocation} from 'react-router-dom'
 import {User, Set, Word} from './types'
 
 export const AppContext = createContext<any>({})
@@ -8,7 +8,8 @@ export const AppContext = createContext<any>({})
 export const AppContextProvider = (props: {
     children: any
 }) => {
-    const {replace, location} = useHistory()
+    const {replace} = useHistory()
+    const location = useLocation()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [showLogin, setShowLogin] = useState(false)
@@ -19,12 +20,14 @@ export const AppContextProvider = (props: {
     const [users, setUsers] = useState<User[]>([])
     const [sets, setSets] = useState<Set[]>([])
     const [words, setWords] = useState<Word[]>([])
+    const [buzzWords, setBuzzWords] = useState<Word[]>([])
 
     useEffect(() => {
         get('users').then(setUsers)
         get('sets').then(setSets)
         get('words').then(setWords)
-    }, [addSet, addWord, location])
+        get('buzz_words').then(setBuzzWords)
+    }, [addSet, addWord, location.pathname, window.location])
 
     const continueToAppPage = () => {
         replace("/sets")
@@ -66,6 +69,7 @@ export const AppContextProvider = (props: {
         addSet, setAddSet,
         userid, setUserId,
         addWord, setAddWord,
+        buzzWords, setBuzzWords,
         handleLogin
     }
 

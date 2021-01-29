@@ -6,7 +6,8 @@ const StyledRoute = (props: {path: string, children: any}) => {
     const history = useHistory()
     let collapseIn = history.location.pathname === props.path
     if ((history.location.pathname.includes('terms') && props.path.includes('terms'))
-        || (history.location.pathname.includes('study') && props.path.includes('study'))) {
+        || (history.location.pathname.includes('study') && props.path.includes('study'))
+        || (history.location.pathname.includes('edit') && props.path.includes('edit'))) {
         collapseIn = true
     }
     return (
