@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
 import List from './List'
 import { Word, Set } from '../types'
@@ -26,10 +26,14 @@ const SetView = () => {
                 {selected ? (
                     <div>
                         <div className='box'>
-                            <List list={selectedWords} keys={['term', 'definition']} onAddClick={() => setAddWord(true)}/>
+                            <List 
+                                list={selectedWords} 
+                                keys={['term', 'definition']} 
+                                onAddClick={() => setAddWord(true)} 
+                                callEdit={(id: number) => history.push(`/edit/terms/${id}`)}/>
                         </div>
                         <br/>
-                        <Button variant='contained' color='primary' onClick={() => history.push('/study')}>Study Terms</Button>
+                        <Button variant='contained' color='primary' onClick={() => history.push(`/study/${setid}`)}>Study Terms</Button>
                     </div>
                 ) : null}
             </Card>

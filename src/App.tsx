@@ -14,6 +14,7 @@ import SideNav from './components/NavTabs';
 import StyledRoute from './components/StyledRoute';
 import Header from './components/Header';
 import EditSetPage from './components/EditSetPage';
+import EditWordPage from './components/EditWordsPage';
 
 const App = () => {
   const { showLogin, addSet, addWord } = useContext(AppContext)
@@ -36,6 +37,9 @@ const App = () => {
         </StyledRoute>
         <StyledRoute path="/terms/:setid">
           {!addWord ? <TermsPage /> : <AddWordPage />}
+        </StyledRoute>
+        <StyledRoute path="/edit/terms/:wordid">
+          <EditWordPage/>
         </StyledRoute>
         <StyledRoute path="/study/:setid">
             <StudyPage/>
