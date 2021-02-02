@@ -1,9 +1,9 @@
 import React from 'react'
 import App from './App'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { AppContextProvider } from './AppContext'
 import { ThemeProvider, createMuiTheme, useMediaQuery, CssBaseline } from '@material-ui/core'
-import { purple, /* green */ } from '@material-ui/core/colors';
+import { green /* green */ } from '@material-ui/core/colors';
 
 const Router = () => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -15,7 +15,9 @@ const Router = () => {
                 main: '#43a047'
             }, 
             // primary: green,
-            secondary: purple
+            secondary: {
+                main: green[900]
+            }
         },
         typography: {
             fontFamily: 'Montserrat'
@@ -47,7 +49,7 @@ const Router = () => {
             <CssBaseline/>
             <BrowserRouter>
                 <AppContextProvider>
-                    <Switch><App /></Switch>
+                    <Switch><App /><Route>404</Route></Switch>
                 </AppContextProvider>
             </BrowserRouter>
         </ThemeProvider>

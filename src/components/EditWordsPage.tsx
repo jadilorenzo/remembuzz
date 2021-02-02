@@ -22,7 +22,7 @@ const EditWordPage = () => {
     const word = (words.filter((word: Word) => `${word.id}` === `${wordid}`)[0] || { term: "No word selected", definition: '' })
 
     const [newTerm, setNewTerm] = useState(word.term)
-    const [newBuzzWords, setBuzzWords] = useState<string[]>(buzzWords.map(word => word.word))
+    const [newBuzzWords, setBuzzWords] = useState<string[]>(buzzWords.map((word: any) => word.word))
 
     console.log(newBuzzWords)
 

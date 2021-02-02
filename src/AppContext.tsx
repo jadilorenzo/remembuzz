@@ -14,6 +14,7 @@ export const AppContextProvider = (props: {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [showLogin, setShowLogin] = useState(false)
+    const [isInTest, setIsInTest] = useState<boolean>(false)
     const [login, setLogin] = useState(isLoggedInAlready === 'true')
     const [addSet, setAddSet] = useState(false)
     const [addWord, setAddWord] = useState(false)
@@ -68,6 +69,7 @@ export const AppContextProvider = (props: {
         checkLogin,
         login, setLogin,
         showLogin, setShowLogin,
+        isInTest, setIsInTest,
         selectSet,
         addSet, setAddSet,
         userid, setUserId,
