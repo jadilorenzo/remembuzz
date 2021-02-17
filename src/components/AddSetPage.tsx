@@ -22,7 +22,7 @@ const AddSetPage = () => {
                     </div>
                     <div style={{marginTop: '1rem'}}>
                         <Button className='outlined' onClick={() => setAddSet(false)}>Cancel</Button>
-                        {" "}
+                        {' '}
                         <Button className='filled' onClick={addSet}>Add</Button>
                     </div>
                 </Card>

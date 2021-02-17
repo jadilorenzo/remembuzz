@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
-import { AppContext } from "../AppContext";
-import {Typography, Button} from "@material-ui/core";
+import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import { AppContext } from '../AppContext'
+import {Typography, Button} from '@material-ui/core'
 
 const Header = () => {
     const history = useHistory()

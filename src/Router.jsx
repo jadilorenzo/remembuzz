@@ -3,10 +3,10 @@ import App from './App'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { AppContextProvider } from './AppContext'
 import { ThemeProvider, createMuiTheme, useMediaQuery, CssBaseline } from '@material-ui/core'
-import { green /* green */ } from '@material-ui/core/colors';
+import { green /* green */ } from '@material-ui/core/colors'
 
 const Router = () => {
-    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
     const theme = createMuiTheme({
         palette: {
@@ -42,7 +42,7 @@ const Router = () => {
                 variant: 'outlined'
             }
         }
-    });
+    })
 
     return (
         <ThemeProvider theme={theme}>
@@ -56,4 +56,4 @@ const Router = () => {
     )
 }
 
-export default Router;
+export default Router

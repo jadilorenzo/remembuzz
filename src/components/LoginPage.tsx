@@ -24,7 +24,7 @@ const LoginPage = () => {
                         <br />
                         <div>
                             <Button variant='outlined' onClick={() => setShowLogin(false)}>Cancel</Button>
-                            {" "}
+                            {' '}
                             <Button variant='contained' color='primary' onClick={checkLogin}>Go</Button>
                         </div>
                     </div>

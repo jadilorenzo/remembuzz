@@ -1,5 +1,5 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { Tab, Tabs, Hidden } from '@material-ui/core'
 
 const SideNav = () => {
@@ -40,4 +40,4 @@ const SideNav = () => {
     )
 }
 
-export default SideNav;
+export default SideNav

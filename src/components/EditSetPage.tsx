@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { Container, Card, TextField, Button } from '@material-ui/core';
-import { useParams, useHistory } from 'react-router-dom';
-import { AppContext } from '../AppContext';
+import React, { useContext, useState } from 'react'
+import { Container, Card, TextField, Button } from '@material-ui/core'
+import { useParams, useHistory } from 'react-router-dom'
+import { AppContext } from '../AppContext'
 import {Set} from '../types'
 import {post} from '../api'
 
@@ -9,13 +9,12 @@ const EditSetPage = () => {
     const history = useHistory()
     const {setid} = useParams<any>()
     const {sets} = useContext(AppContext)
-    console.log(sets, setid)
-    const set = (sets.filter((set: Set) => `${set.id}` === `${setid}`)[0] || {name: "No set selected"})
+    const set = (sets.filter((set: Set) => `${set.id}` === `${setid}`)[0] || {name: 'No set selected'})
 
     const [setName, setSetName] = useState(set.name)
 
     const editSet = () => {
-        post(`edit/set`, {
+        post('edit/set', {
             setid: set.id,
             name: setName
         }).then(() => {

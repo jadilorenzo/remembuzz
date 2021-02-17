@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from 'react'
 import {get} from './api'
 import {useHistory, useLocation} from 'react-router-dom'
 import {User, Set, Word} from './types'
@@ -32,12 +32,12 @@ export const AppContextProvider = (props: {
     }, [addSet, addWord, location.pathname])
 
     const continueToAppPage = () => {
-        replace("/sets")
+        replace('/sets')
     }
 
     const checkLogin = () => {
         if (users.filter(user => user.name === username).length > 0) {
-            replace("/sets")
+            replace('/sets')
             setShowLogin(false)
             setLogin(true)
             setUserId(users.filter(user => user.name === username)[0].id)

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { AppContext } from "../AppContext";
+import React, { useContext } from 'react'
+import { AppContext } from '../AppContext'
 import List from './List'
 import { Word, Set } from '../types'
-import { Container, Card, Button } from "@material-ui/core";
-import { useHistory, useParams } from "react-router-dom";
+import { Container, Card, Button } from '@material-ui/core'
+import { useHistory, useParams } from 'react-router-dom'
 
 const SetView = () => {
     const { words, sets, setAddWord } = useContext(AppContext)

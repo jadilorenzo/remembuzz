@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { Paper } from '@material-ui/core';
-import { AppContext } from '../AppContext';
+import React, { useContext } from 'react'
+import { Paper } from '@material-ui/core'
+import { AppContext } from '../AppContext'
 import {Word} from '../types'
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
 const BuzzList = () => {
     const {words, buzzWords} = useContext(AppContext)

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import Collapse from '@material-ui/core/Collapse'
-import { useHistory, Route } from 'react-router-dom';
+import { useHistory, Route } from 'react-router-dom'
 
 const StyledRoute = (props: {path: string, children: any}) => {
     const history = useHistory()

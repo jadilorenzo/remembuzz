@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { Container, Card, TextField, Button } from '@material-ui/core';
-import { useParams, useHistory } from 'react-router-dom';
-import { AppContext } from '../AppContext';
+import React, { useContext, useState } from 'react'
+import { Container, Card, TextField, Button } from '@material-ui/core'
+import { useParams, useHistory } from 'react-router-dom'
+import { AppContext } from '../AppContext'
 import { Word } from '../types'
 import { post } from '../api'
 import {uniq} from 'lodash'
@@ -19,7 +19,7 @@ const EditWordPage = () => {
     const {wordid} = useParams<any>()
     const { words, buzzWords } = useContext(AppContext)
     const setid = window.localStorage.getItem('setid')
-    const word = (words.filter((word: Word) => `${word.id}` === `${wordid}`)[0] || { term: "No word selected", definition: '' })
+    const word = (words.filter((word: Word) => `${word.id}` === `${wordid}`)[0] || { term: 'No word selected', definition: '' })
 
     const [newTerm, setNewTerm] = useState(word.term)
     const [newBuzzWords, setBuzzWords] = useState<string[]>(buzzWords.map((word: any) => word.word))
@@ -27,7 +27,7 @@ const EditWordPage = () => {
     console.log(newBuzzWords)
 
     const editWord = () => {
-        post(`edit/word`, {
+        post('edit/word', {
             wordid: word.id,
             term: newTerm
         }).then(() => {

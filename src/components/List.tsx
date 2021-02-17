@@ -1,6 +1,6 @@
 import React from 'react'
 import { Paper, Button, IconButton } from '@material-ui/core'
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@material-ui/icons/Edit'
 
 const List = ({list, onClick, keys, onAddClick, callEdit} : {
     list: any[]
