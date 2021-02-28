@@ -6,7 +6,7 @@ import { Container, Card, Button } from '@material-ui/core'
 import { useHistory, useParams } from 'react-router-dom'
 
 const SetView = () => {
-    const { words, sets, setAddWord } = useContext(AppContext)
+    const { words, sets, setAddWord, login } = useContext(AppContext)
     const history = useHistory()
     const {setid} = useParams<any>()
     window.localStorage.setItem('setid', setid)
@@ -30,7 +30,7 @@ const SetView = () => {
                                 list={selectedWords} 
                                 keys={['term', 'definition']} 
                                 onAddClick={() => setAddWord(true)} 
-                                callEdit={(id: number) => history.push(`/edit/terms/${id}`)}/>
+                                callEdit={login ? (id: number) => history.push(`/edit/terms/${id}`) : undefined}/>
                         </div>
                         <br/>
                         <Button variant='contained' color='primary' onClick={() => history.push(`/study/${setid}`)}>Study Terms</Button>

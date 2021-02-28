@@ -15,16 +15,17 @@ import StyledRoute from './components/StyledRoute'
 import Header from './components/Header'
 import EditSetPage from './components/EditSetPage'
 import EditWordPage from './components/EditWordsPage'
+import Loader from './components/Loader'
 
 const App = () => {
-    const { showLogin, addSet, addWord } = useContext(AppContext)
+    const { showLogin, addSet, addWord, loading } = useContext(AppContext)
     const history = useHistory()
     console.log(history.location.pathname)
 
     return (
         <div>
             <Header/>
-            <div>
+            {loading ? <Loader/> :<div>
                 <StyledRoute path="/">
                     {!showLogin ? <FrontPage />
                         : <LoginPage />}
@@ -47,7 +48,7 @@ const App = () => {
                 <div style={{position: 'absolute', top: 'calc(50vh - 5rem)', display: 'flex', flexDirection: 'column'}}>
                     <SideNav/>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

@@ -17,7 +17,7 @@ const List = ({list, onClick, keys, onAddClick, callEdit} : {
                         {keys[0] && <div className='list-item-primary-text'>{item[keys[0]]}</div>}
                         {keys[1] && <div className='list-item-secondary-text'>{item[keys[1]]}</div>}
                     </div>
-                    <div><IconButton onClick={() => callEdit(item.id)}><EditIcon /></IconButton></div>
+                    {(callEdit !== undefined) ? <div><IconButton onClick={() => callEdit(item.id)}><EditIcon /></IconButton></div> : null}
                 </Paper>
             ))}
             <Button onClick={onAddClick} style={{ margin: '0.25rem', fontSize: '2rem'}}><div>+</div></Button>
