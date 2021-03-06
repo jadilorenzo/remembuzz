@@ -15,7 +15,7 @@ const Search = ({list, setItem, keys} : {
                 {list.filter(x => {
                     return (x[keys[0]]).toLowerCase().includes(input.toLowerCase())
                 }).map(x => (
-                    <Paper key={x.id} style={{width: 'calc(100% - 1rem)', marginBottom: '0.5rem'}} onClick={() => setItem(x.id)} className='list-item search-item'>
+                    <Paper key={x.id} style={{width: 'calc(100% - 1rem)', marginBottom: '0.5rem', borderRadius: '0.5rem'}} onClick={() => setItem(x.id)} className='list-item search-item'>
                         <div className='list-item-primary-text'>{x[keys[0]]}</div>
                         <div className='list-item-secondary-text'>{x[keys[1]]}</div>
                     </Paper>

@@ -12,36 +12,45 @@ const Router = () => {
         palette: {
             type: prefersDarkMode ? 'dark' : 'light',
             primary: {
-                main: '#43a047'
-            }, 
+                main: '#43a047',
+            },
             // primary: green,
             secondary: {
-                main: green[900]
-            }
+                main: green[900],
+            },
         },
         typography: {
-            fontFamily: 'Montserrat'
+            fontFamily: 'Montserrat',
         },
         props: {
             MuiButtonBase: {
-                disableTouchRipple: true
+                disableTouchRipple: true,
+                style: {
+                    borderRadius: '0.5rem',
+                },
+            },
+            MuiPaper: {
+                style: {
+                    borderRadius: '0.5rem',
+                },
             },
             MuiTextField: {
-                style: { margin: '1rem', width: '50%' }
-            }, 
+                style: { margin: '1rem', width: '50%' },
+            },
             MuiContainer: {
-                maxWidth: 'md'
+                maxWidth: 'md',
             },
             MuiCard: {
                 style: {
-                    background: prefersDarkMode ? '#303030' : 'fafafa' ,
+                    background: prefersDarkMode ? '#303030' : 'fafafa',
                     padding: '0.5rem',
                     maxHeight: '51vh',
-                    overflow: 'scroll'
+                    overflow: 'scroll',
+                    borderRadius: '0.5rem',
                 },
-                variant: 'outlined'
-            }
-        }
+                variant: 'outlined',
+            },
+        },
     })
 
     return (

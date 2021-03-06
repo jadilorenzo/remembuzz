@@ -1,21 +1,18 @@
 import React, { useContext, useState } from 'react'
 import { Container, Card, TextField, Button } from '@material-ui/core'
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { AppContext } from '../AppContext'
-import {Set} from '../types'
 import {post} from '../api'
 
 const EditSetPage = () => {
     const history = useHistory()
-    const {setid} = useParams<any>()
-    const {sets} = useContext(AppContext)
-    const set = (sets.filter((set: Set) => `${set.id}` === `${setid}`)[0] || {name: 'No set selected'})
+    const {selectedSet} = useContext(AppContext)
 
-    const [setName, setSetName] = useState(set.name)
+    const [setName, setSetName] = useState(selectedSet.name)
 
     const editSet = () => {
         post('edit/set', {
-            setid: set.id,
+            setid: selectedSet.id,
             name: setName
         }).then(() => {
             history.push('/sets')
@@ -26,10 +23,16 @@ const EditSetPage = () => {
         <Container>
             <Card>
                 <h1>Edit Set</h1>
-                <h3>{set.name}</h3>
-                <TextField label='Set Name' value={setName} onChange={(e) => setSetName(e.target.value)}/>
+                <h3>{selectedSet.name}</h3>
+                <TextField
+                    label="Set Name"
+                    value={setName}
+                    onChange={(e) => setSetName(e.target.value)}
+                />
                 <div>
-                    <Button color='primary' variant='contained' onClick={editSet}>Update</Button>
+                    <Button color="primary" variant="contained" onClick={editSet}>
+                        Update
+                    </Button>
                 </div>
             </Card>
         </Container>

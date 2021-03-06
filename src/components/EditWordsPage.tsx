@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Container, Card, TextField, Button } from '@material-ui/core'
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { AppContext } from '../AppContext'
-import { Word } from '../types'
 import { post } from '../api'
 import {uniq} from 'lodash'
 
@@ -16,24 +15,19 @@ const WordButton = (props: {children: string, handleClick: any, in: boolean}) =>
 
 const EditWordPage = () => {
     const history = useHistory()
-    const {wordid} = useParams<any>()
-    const { words, buzzWords } = useContext(AppContext)
-    const setid = window.localStorage.getItem('setid')
-    const word = (words.filter((word: Word) => `${word.id}` === `${wordid}`)[0] || { term: 'No word selected', definition: '' })
+    const { selectedWord, buzzWords, setid} = useContext(AppContext)
 
-    const [newTerm, setNewTerm] = useState(word.term)
+    const [newTerm, setNewTerm] = useState(selectedWord.term)
     const [newBuzzWords, setBuzzWords] = useState<string[]>(buzzWords.map((word: any) => word.word))
-
-    console.log(newBuzzWords)
 
     const editWord = () => {
         post('edit/word', {
-            wordid: word.id,
+            wordid: selectedWord.id,
             term: newTerm
         }).then(() => {
             post('buzz_words', {
-                wordid: word.id,
-                words: newBuzzWords
+                wordid: selectedWord.id,
+                words: newBuzzWords,
             }).then(() => {
                 history.push(`/terms/${setid}`)
             })
@@ -57,15 +51,28 @@ const EditWordPage = () => {
         <Container>
             <Card>
                 <h1>Edit word</h1>
-                <h3>{word.term}</h3>
-                <TextField label='Term' value={newTerm} onChange={(e) => setNewTerm(e.target.value)}/>
+                <h3>{selectedWord.term}</h3>
+                <TextField
+                    label="Term"
+                    value={newTerm}
+                    onChange={(e) => setNewTerm(e.target.value)}
+                />
                 <Card>
                     <h3>Buzzwords</h3>
-                    {word.definition.split(' ').map((x: string) => <WordButton in={newBuzzWords.includes(x)} handleClick={handleClick}>{x}</WordButton>)}
+                    {selectedWord.definition.split(' ').map((x: string) => (
+                        <WordButton
+                            in={newBuzzWords.includes(x)}
+                            handleClick={handleClick}
+                        >
+                            {x}
+                        </WordButton>
+                    ))}
                 </Card>
-                <br/>
+                <br />
                 <div>
-                    <Button color='primary' variant='contained' onClick={editWord}>Update</Button>
+                    <Button color="primary" variant="contained" onClick={editWord}>
+                        Update
+                    </Button>
                 </div>
             </Card>
         </Container>

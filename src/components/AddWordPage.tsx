@@ -4,12 +4,11 @@ import { post } from '../api'
 import { Button, Container, Card, TextField } from '@material-ui/core'
 
 const AddSetPage = () => {
-    const { setAddWord } = useContext(AppContext)
+    const { setAddWord, setid } = useContext(AppContext)
     const [term, setTerm] = useState('')
     const [definition, setDefinition] = useState('')
 
     const addSet = () => {
-        const setid = window.localStorage.getItem('setid')
         post('words', { term, definition, setid }).then(() => setAddWord(false))
     }
 

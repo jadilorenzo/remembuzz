@@ -2,12 +2,9 @@ import React, { useContext } from 'react'
 import { Paper } from '@material-ui/core'
 import { AppContext } from '../AppContext'
 import {Word} from '../types'
-import { useParams } from 'react-router-dom'
 
 const BuzzList = () => {
-    const {words, buzzWords} = useContext(AppContext)
-    const { setid } = useParams<any>()
-    const selectedWords = words.filter((word: Word) => `${word.setid}` === `${setid}`)
+    const {buzzWords, selectedWords} = useContext(AppContext)
 
     return (
         <div>
