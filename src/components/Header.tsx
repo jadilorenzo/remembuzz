@@ -1,11 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { AppContext } from '../AppContext'
 import {Typography, Button} from '@material-ui/core'
 
 const Header = () => {
     const history = useHistory()
-    const {handleLogin, login, showLogin} = useContext(AppContext)
 
     return (
         <div className='title'>
@@ -19,8 +17,10 @@ const Header = () => {
             </div> 
             <div style={{ flexGrow: 1 }} />
             <div className='header-buttons'>
-                <Button onClick={() => history.push('/')}>Home</Button>
-                <Button onClick={handleLogin}>{(!login ? (!(showLogin && history.location.pathname === '/') ? 'Login' : 'Close') : 'Logout')}</Button>
+                <a href='/'><Button onClick={() => history.push('/')}>Home</Button></a>
+                <a href='/0/0/app/login'>
+                    <Button>Login</Button>
+                </a>
             </div>
         </div>
     )

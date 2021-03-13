@@ -3,10 +3,14 @@ import Typography from '@material-ui/core/Typography'
 import { useTheme, Card } from '@material-ui/core'
 import NoTest from './NoTest.svg'
 import { AppContext } from '../AppContext'
+import useUpdateId from '../useUpdateId'
 
 const BuzzTest = () => {
     const theme = useTheme()
     const {setid} = useContext(AppContext)
+    
+    useUpdateId()
+
     return (
         <div>
             <Typography variant="h4">

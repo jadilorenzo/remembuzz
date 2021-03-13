@@ -3,6 +3,7 @@ import { Container, Card, TextField, Button } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { AppContext } from '../AppContext'
 import {post} from '../api'
+import useUpdateId from '../useUpdateId'
 
 const EditSetPage = () => {
     const history = useHistory()
@@ -18,6 +19,8 @@ const EditSetPage = () => {
             history.push('/sets')
         }) 
     }
+
+    useUpdateId()
 
     return (
         <Container>

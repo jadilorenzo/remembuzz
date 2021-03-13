@@ -4,11 +4,14 @@ import { AppContext } from '../AppContext'
 import { Set } from '../types'
 import BuzzList from './BuzzList'
 import BuzzTest from './BuzzTest'
+import useUpdateId from '../useUpdateId'
 
 const Flashcards = () =>  {
     const { sets, isInTest, setIsInTest, setid } = useContext(AppContext)
 
     const selectedSet = (sets.filter((s: Set) => `${s.id}` === `${setid}`)[0] || { name: 'No set selected...' })
+
+    useUpdateId()
 
     return (
         <Container>

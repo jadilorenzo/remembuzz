@@ -1,9 +1,13 @@
 import React from 'react'
 import App from './App'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { AppContextProvider } from './AppContext'
 import { ThemeProvider, createMuiTheme, useMediaQuery, CssBaseline } from '@material-ui/core'
 import { green /* green */ } from '@material-ui/core/colors'
+import FrontPage from './components/FrontPage'
+import LoginPage from './components/LoginPage'
+import Header from './components/Header'
+import StyledRoute from './components/StyledRoute'
 
 const Router = () => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -53,13 +57,34 @@ const Router = () => {
         },
     })
 
+    theme.shadows = [
+        'none',
+        'rgba(0, 0, 0, 0.2) 0.1rem 0.1rem',
+        'rgba(0, 0, 0, 0.1) 0.2rem 0.2rem',
+    ]
+
+
     return (
         <ThemeProvider theme={theme}>
-            <CssBaseline/>
+            <CssBaseline />
             <BrowserRouter>
-                <AppContextProvider>
-                    <Switch><App /><Route>404</Route></Switch>
-                </AppContextProvider>
+                <Header />
+                <Switch>
+                    <StyledRoute exact path="/">
+                        <FrontPage />
+                    </StyledRoute>
+                    <Route path="/:setid/:wordid/app">
+                        <AppContextProvider>
+                            <StyledRoute exact path="/:setid/:wordid/app/login">
+                                <LoginPage />
+                            </StyledRoute>
+                            <App />
+                        </AppContextProvider>
+                    </Route>
+                    <Route>
+                        <Redirect to="/" />
+                    </Route>
+                </Switch>
             </BrowserRouter>
         </ThemeProvider>
     )

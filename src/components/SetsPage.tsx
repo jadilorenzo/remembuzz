@@ -5,10 +5,13 @@ import Search from './Search'
 import {Set} from '../types'
 import { Container, Card } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
+import useUpdateId from '../useUpdateId'
 
 const AppPage = () => {
     const { sets, selectSet, login, setAddSet, userid } = useContext(AppContext)
     const history = useHistory()
+
+    useUpdateId()
 
     return (
         <Container>

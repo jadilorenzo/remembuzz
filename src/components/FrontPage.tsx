@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import logo from '../Logo.png'
 import Typewriter from 'typewriter-effect'
-import { AppContext } from '../AppContext'
 import {Button, Typography} from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 const FrontPage = () => {
-    const { continueToAppPage } = useContext(AppContext)
-
     return (
         <div>
             <img alt='learn' src={logo} style={{ width: '6rem' }} />
@@ -35,7 +33,7 @@ const FrontPage = () => {
             <br/>
             <Button variant="outlined">Sell Me.</Button>
             {' '}
-            <Button onClick={continueToAppPage} variant="contained" color='primary'>I'm sold.</Button>
+            <Link to='/0/0/app/sets'><Button variant="contained" color='primary'>I'm sold.</Button></Link>
         </div>
     )
 }

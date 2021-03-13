@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { AppContext } from '../AppContext'
 import { post } from '../api'
 import {uniq} from 'lodash'
+import useUpdateId from '../useUpdateId'
 
 const WordButton = (props: {children: string, handleClick: any, in: boolean}) => {
     const [selected, setSelected] = useState(props.in)
@@ -45,7 +46,7 @@ const EditWordPage = () => {
         })
     }
 
-
+    useUpdateId()
 
     return (
         <Container>

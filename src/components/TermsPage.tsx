@@ -3,11 +3,13 @@ import { AppContext } from '../AppContext'
 import List from './List'
 import { Container, Card, Button } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
+import useUpdateId from '../useUpdateId'
 
 const SetView = () => {
     const {
         setAddWord,
         login,
+        wordid,
         setWordId,
         setid,
         selectedWords,
@@ -16,6 +18,8 @@ const SetView = () => {
     } = useContext(AppContext)
     const history = useHistory()
 
+    useUpdateId()
+
     return (
         <Container>
             <Card>
@@ -23,18 +27,29 @@ const SetView = () => {
                 <h3>{selectedSet.name}</h3>
                 {setSelected ? (
                     <div>
-                        <div className='box'>
-                            <List 
-                                list={selectedWords} 
-                                keys={['term', 'definition']} 
-                                onAddClick={() => setAddWord(true)} 
-                                callEdit={login ? (id: number) => {
-                                    setWordId(id)
-                                    history.push(`/edit/terms/${id}`)
-                                } : undefined}/>
+                        <div className="box">
+                            <List
+                                list={selectedWords}
+                                keys={['term', 'definition']}
+                                onAddClick={() => setAddWord(true)}
+                                callEdit={
+                                    login
+                                        ? (id: number) => {
+                                            setWordId(id)
+                                            history.push(`/${setid}/${id}/edit/terms`)
+                                        }
+                                        : undefined
+                                }
+                            />
                         </div>
-                        <br/>
-                        <Button variant='contained' color='primary' onClick={() => history.push(`/study/${setid}`)}>Study Terms</Button>
+                        <br />
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => history.push(`/${setid}/${wordid}/app/study`)}
+                        >
+                Study Terms
+                        </Button>
                     </div>
                 ) : null}
             </Card>

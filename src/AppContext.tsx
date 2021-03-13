@@ -20,7 +20,6 @@ export const AppContextProvider = (props: {
     const isLoggedInAlready = window.localStorage.getItem('login')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [showLogin, setShowLogin] = useState(false)
     const [isInTest, setIsInTest] = useState<boolean>(false)
     const [login, setLogin] = useState(isLoggedInAlready === 'true')
     const [addSet, setAddSet] = useState(false)
@@ -28,10 +27,10 @@ export const AppContextProvider = (props: {
 
     const [userid, setUserId] = useState('')
     const [setid, setSetId] = useState(
-        window.localStorage.getItem('setid') || params.setid || ''
+        params.setid || window.localStorage.getItem('setid') ||  ''
     )
     const [wordid, setWordId] = useState(
-        window.localStorage.getItem('wordid') || params.wordid || ''
+        params.wordid || window.localStorage.getItem('wordid') ||  ''
     )
 
     const selectedWords = words.filter(
@@ -49,9 +48,6 @@ export const AppContextProvider = (props: {
     )[0] || { term: 'No word selected...', definition: '' }
 
     const wordSelected: boolean = selectedSet.name !== 'No word selected...'
-
-
-
     
     const [loading, setLoading] = useState<boolean>(true)
 
@@ -86,14 +82,13 @@ export const AppContextProvider = (props: {
     }, [addSet, addWord, location.pathname])
     
     const continueToAppPage = () => {
-        replace('/sets')
+        replace(`/${setid}/${wordid}/app/sets`)
     }
 
     const checkLogin = async () => {
         post('login', {username, password}).then((r) => {
             if (r.result) {
-                replace('/sets')
-                setShowLogin(false)
+                replace(`/${setid}/${wordid}/app/sets`)
                 setLogin(true)
                 setUserId(users.filter(user => user.name === username)[0].id)
                 window.localStorage.setItem('login', 'true')
@@ -104,18 +99,8 @@ export const AppContextProvider = (props: {
         
     }
 
-    const handleLogin = () => {
-        if (login) {
-            setLogin(false)
-            window.localStorage.setItem('login', 'false')
-        } else {
-            setShowLogin(bool => !bool)
-        }
-        replace('/')
-    }
-
     const selectSet = (id: string) => {
-        replace(`/terms/${id}`)
+        replace(`/${id}/${wordid}/app/terms`)
         window.localStorage.setItem('setid', id)
     }
 
@@ -135,11 +120,8 @@ export const AppContextProvider = (props: {
         continueToAppPage,
         checkLogin,
         selectSet,
-        handleLogin,
         setBuzzWords,
 
-        showLogin,
-        setShowLogin,
         isInTest,
         setIsInTest,
         addSet,

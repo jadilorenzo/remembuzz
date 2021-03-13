@@ -20,7 +20,7 @@ const List = ({list, onClick, keys, onAddClick, callEdit} : {
                     {(callEdit !== undefined) ? <div><IconButton onClick={() => callEdit(item.id)}><EditIcon /></IconButton></div> : null}
                 </Paper>
             ))}
-            <Button onClick={onAddClick} style={{ margin: '0.25rem', fontSize: '2rem'}}><div>+</div></Button>
+            <Button onClick={onAddClick} style={{ margin: '0.25rem', fontSize: '2rem', borderRadius: '0.5rem'}}><div>+</div></Button>
         </div> 
     )
 }

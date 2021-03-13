@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../AppContext'
 import { post } from '../api'
 import { Button, Container, Card, TextField } from '@material-ui/core'
+import useUpdateId from '../useUpdateId'
 
 const AddSetPage = () => {
     const { setAddWord, setid } = useContext(AppContext)
@@ -11,6 +12,8 @@ const AddSetPage = () => {
     const addSet = () => {
         post('words', { term, definition, setid }).then(() => setAddWord(false))
     }
+    
+    useUpdateId()
 
     return (
         <div>

@@ -1,14 +1,17 @@
 import React, {useContext} from 'react'
 import { AppContext } from '../AppContext'
 import { Button, Card, Container, TextField } from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import useUpdateId from '../useUpdateId'
 
 const LoginPage = () => {
     const { 
         username, setUsername,
         password, setPassword,
-        setShowLogin, 
         checkLogin
     } = useContext(AppContext)
+    
+    useUpdateId()
 
     return (
         <div>
@@ -23,7 +26,7 @@ const LoginPage = () => {
                         <TextField variant='outlined' value={password} onChange={(e) => setPassword(e.target.value)} type='password'/>
                         <br />
                         <div>
-                            <Button variant='outlined' onClick={() => setShowLogin(false)}>Cancel</Button>
+                            <Link to='/'><Button variant='outlined'>Cancel</Button></Link>
                             {' '}
                             <Button variant='contained' color='primary' onClick={checkLogin}>Go</Button>
                         </div>
