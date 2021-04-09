@@ -81,9 +81,10 @@ const Router = () => {
                             <App />
                         </AppContextProvider>
                     </Route>
-                    <Route>
-                        <Redirect to="/" />
-                    </Route>
+                    <Route render={(routeProps) => {
+                        console.log(routeProps.location.pathname)
+                        return <Redirect to="/" />
+                    }}/>
                 </Switch>
             </BrowserRouter>
         </ThemeProvider>

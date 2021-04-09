@@ -15,3 +15,9 @@ export interface Word {
     definition: string
     setid: string
 }
+
+export interface BuzzWord {
+  id: string;
+  word: string;
+  wordid: string;
+}

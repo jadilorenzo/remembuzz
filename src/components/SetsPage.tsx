@@ -26,7 +26,7 @@ const AppPage = () => {
                             onClick={selectSet} 
                             onAddClick={() => setAddSet(true)} 
                             callEdit={(id: number) => {
-                                history.push(`/sets/edit/${id}`)
+                                history.push(`/${id}/0/app/edit/set`)
                             }}/>
                     </div> : null}
                     <Search list={sets} keys={['name']} setItem={selectSet} />

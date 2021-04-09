@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Container, Card, TextField, Button } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { AppContext } from '../AppContext'
@@ -16,7 +16,7 @@ const WordButton = (props: {children: string, handleClick: any, in: boolean}) =>
 
 const EditWordPage = () => {
     const history = useHistory()
-    const { selectedWord, buzzWords, setid} = useContext(AppContext)
+    const { selectedWord, buzzWords, setid, wordid} = useContext(AppContext)
 
     const [newTerm, setNewTerm] = useState(selectedWord.term)
     const [newBuzzWords, setBuzzWords] = useState<string[]>(buzzWords.map((word: any) => word.word))
@@ -30,10 +30,16 @@ const EditWordPage = () => {
                 wordid: selectedWord.id,
                 words: newBuzzWords,
             }).then(() => {
-                history.push(`/terms/${setid}`)
+                history.push(`/${setid}/${wordid}/app/terms`)
             })
         })
     }
+
+    useEffect(() => {
+        return () => {
+            setBuzzWords([])
+        }
+    }, [])
 
     const handleClick = (buzzWord: string) => {
         setBuzzWords((w: string[]) => {

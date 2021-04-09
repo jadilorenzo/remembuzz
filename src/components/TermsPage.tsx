@@ -36,7 +36,7 @@ const SetView = () => {
                                     login
                                         ? (id: number) => {
                                             setWordId(id)
-                                            history.push(`/${setid}/${id}/edit/terms`)
+                                            history.push(`/${setid}/${id}/app/edit/term`)
                                         }
                                         : undefined
                                 }
