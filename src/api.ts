@@ -8,7 +8,7 @@ export const get = async (part: string) => {
 }
 
 export const post = async (part: string, json: any) => {
-    return await fetch(`http://127.0.0.1:8000/post/${part}/`, {
+    return await fetch(`http://127.0.0.1:8000/${part}/`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json, text/plain, */*',

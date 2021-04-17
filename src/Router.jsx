@@ -1,13 +1,12 @@
+import './Styles.css'
 import React from 'react'
-import App from './App'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Switch} from 'react-router-dom'
 import { AppContextProvider } from './AppContext'
-import { ThemeProvider, createMuiTheme, useMediaQuery, CssBaseline } from '@material-ui/core'
-import { green /* green */ } from '@material-ui/core/colors'
-import FrontPage from './components/FrontPage'
-import LoginPage from './components/LoginPage'
+import { ThemeProvider, createMuiTheme, useMediaQuery, CssBaseline, Card, Container } from '@material-ui/core'
+import { blue /* green */ } from '@material-ui/core/colors'
+
 import Header from './components/Header'
-import StyledRoute from './components/StyledRoute'
+import App from './App'
 
 const Router = () => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -15,31 +14,24 @@ const Router = () => {
     const theme = createMuiTheme({
         palette: {
             type: prefersDarkMode ? 'dark' : 'light',
-            primary: {
-                main: '#43a047',
-            },
-            // primary: green,
+            primary: blue,
             secondary: {
-                main: green[900],
+                main: blue[900],
             },
-        },
-        typography: {
-            fontFamily: 'Montserrat',
         },
         props: {
+            MuiTypography: {
+                style: {
+                    fontFamily: 'Assistant',
+                    fontWeight: 375
+                }
+            },
             MuiButtonBase: {
                 disableTouchRipple: true,
                 style: {
-                    borderRadius: '0.5rem',
-                },
-            },
-            MuiPaper: {
-                style: {
-                    borderRadius: '0.5rem',
-                },
-            },
-            MuiTextField: {
-                style: { margin: '1rem', width: '50%' },
+                    fontFamily: 'Unica One',
+                    fontSize: '1.1rem'
+                }
             },
             MuiContainer: {
                 maxWidth: 'md',
@@ -70,21 +62,10 @@ const Router = () => {
             <BrowserRouter>
                 <Header />
                 <Switch>
-                    <StyledRoute exact path="/">
-                        <FrontPage />
-                    </StyledRoute>
-                    <Route path="/:setid/:wordid/app">
-                        <AppContextProvider>
-                            <StyledRoute exact path="/:setid/:wordid/app/login">
-                                <LoginPage />
-                            </StyledRoute>
-                            <App />
-                        </AppContextProvider>
-                    </Route>
-                    <Route render={(routeProps) => {
-                        console.log(routeProps.location.pathname)
-                        return <Redirect to="/" />
-                    }}/>
+                    <AppContextProvider>
+                        <Container><Card><App /></Card></Container>
+                    </AppContextProvider>
+                   Hello 
                 </Switch>
             </BrowserRouter>
         </ThemeProvider>
