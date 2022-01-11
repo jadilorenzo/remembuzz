@@ -5,7 +5,7 @@ import MarkButton from './MarkButton'
 import Element from './Element'
 import Leaf from './Leaf'
 import Editor from './Editor'
-
+import HeaderSelection from './HeaderSelection'
 
 const E = {
     toggleBlock,
@@ -16,7 +16,8 @@ const E = {
     MarkButton,
     Element,
     Leaf,
-    Editor
+    Editor,
+    HeaderSelection,
 }
 
 export default E

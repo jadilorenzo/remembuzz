@@ -5,7 +5,7 @@ import {
     BaseEditor,
 } from 'slate'
 
-const LIST_TYPES = ['numbered-list', 'bulleted-list']
+const LIST_TYPES = ['numbered-list', 'bulleted-list', 'math']
 
 export const isBlockActive = (editor: BaseEditor, format: any) => {
     const { selection } = editor

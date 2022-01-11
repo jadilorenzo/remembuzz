@@ -10,7 +10,16 @@ const BlockButton = ({ format, icon }: { format: string; icon: string }) => {
     const editor = useSlate()
     return (
         <Mui.Button
-            variant={E.isBlockActive(editor, format) ? 'contained' : 'text'}
+            color={
+                E.isBlockActive(editor, format) && format !== ''
+                    ? 'primary'
+                    : 'inherit'
+            }
+            variant={
+                E.isBlockActive(editor, format) && format !== ''
+                    ? 'contained'
+                    : 'text'
+            }
             onClick={() => {
                 E.toggleBlock(editor, format)
             }}

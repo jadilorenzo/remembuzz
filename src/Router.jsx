@@ -5,23 +5,27 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { AppContextProvider } from './AppContext'
 import { ThemeProvider, CssBaseline } from '@mui/material'
 import { createTheme } from '@mui/material/styles'
+// import { yellow } from '@mui/material/colors'
 
 const Router = () => {
     const theme = createTheme({
         palette: {
             // mode: 'dark'
+            primary: {
+                main: '#000'
+            },
             background: {
                 default: '#F9F9F9'
             }
         },
         typography: {
-            fontFamily: 'Calibri',
-            h1: { fontFamily: 'Comfortaa'},
-            h2: { fontFamily: 'Comfortaa'},
-            h3: { fontFamily: 'Comfortaa'},
-            h4: { fontFamily: 'Comfortaa'},
-            h5: { fontFamily: 'Comfortaa'},
-            h6: {fontFamily: 'Comfortaa'},
+            fontFamily: 'Calibri, Arial',
+            h1: { fontFamily: 'Comfortaa, Arial'},
+            h2: { fontFamily: 'Comfortaa, Arial'},
+            h3: { fontFamily: 'Comfortaa, Arial'},
+            h4: { fontFamily: 'Comfortaa, Arial'},
+            h5: { fontFamily: 'Comfortaa, Arial'},
+            h6: {fontFamily: 'Comfortaa, Arial'},
             button: {fontFamily: 'Roboto'}
         },
         props: {

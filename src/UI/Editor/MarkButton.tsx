@@ -8,14 +8,14 @@ import E from './index'
 const MarkButton = ({ format, icon }: { format: string; icon: string }) => {
     const editor = useSlate()
     return (
-        <Mui.Button
-            variant={E.isMarkActive(editor, format) ? 'contained' : 'text'}
+        <Mui.IconButton
+            color={E.isMarkActive(editor, format) ? 'primary' : 'inherit'}
             onClick={() => {
                 E.toggleMark(editor, format)
             }}
         >
             {icons[icon]}
-        </Mui.Button>
+        </Mui.IconButton>
     )
 }
 

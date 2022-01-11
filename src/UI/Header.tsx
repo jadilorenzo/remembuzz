@@ -11,7 +11,21 @@ const Header = () => {
 
     return (
         <>
-            <Mui.AppBar elevation={0}>
+            <Mui.AppBar
+                elevation={0}
+                style={{
+                    clipPath: `
+                        polygon(
+                            0% 0%, 
+                            0% 100%, 
+                            1rem calc(100% - 1rem), 
+                            100% calc(100% - 1rem), 
+                            100% 100%, 
+                            100% 0
+                        )`,
+                    height: '5rem',
+                }}
+            >
                 <Mui.Grid container spacing={2} alignItems="center">
                     <Mui.Grid item>
                         <Mui.Box p={2}>
@@ -35,7 +49,7 @@ const Header = () => {
                     </Mui.Grid>
                 </Mui.Grid>
             </Mui.AppBar>
-            <Mui.Box p={3}/>
+            <Mui.Box p={3} />
         </>
     )
 }
