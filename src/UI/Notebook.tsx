@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../AppContext'
 import * as Mui from '@mui/material'
-import UI from '../UI'
+// import UI from '../UI'
+import CustomEditor from './CustomEditorOld'
 
 const Notebook = (props: {id: number}) => {
     const {notebooks} = useContext(AppContext)
@@ -49,7 +50,7 @@ const Notebook = (props: {id: number}) => {
                             </Mui.Grid>
                         </Mui.Grid> */}
                         <Mui.Box p={2}>
-                            <UI.Editor/>
+                            <CustomEditor/> 
                         </Mui.Box>
                     </Mui.Paper>
                 </Mui.Box>
