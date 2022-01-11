@@ -21,7 +21,7 @@ const App = () => {
                     </Context.NotebookSearchContextProvider>
                 </UI.Body>
             </Route>
-            <Route path='/notebooks/1'><UI.Notebook id={1} /></Route>
+            <Route path='/notebooks/1'><UI.Notebook id={1}/></Route>
         </div>
     )
 }

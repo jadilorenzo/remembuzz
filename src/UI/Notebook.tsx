@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../AppContext'
 import * as Mui from '@mui/material'
 // import UI from '../UI'
-import CustomEditor from './CustomEditorOld'
+import CustomEditor from './CustomEditor'
 
 const Notebook = (props: {id: number}) => {
     const {notebooks} = useContext(AppContext)
